@@ -18,6 +18,7 @@ class Hand:
         self.hall_window = QMainWindow()#配置大厅窗口
         pass
 
+    
         ...
         此处配置其他窗口
         ...
@@ -59,7 +60,7 @@ class Hand:
     其他界面操作
     ...
 
-    def getxx(self):
+    def look(self):
         pass
 
     def get_single_chat_data(self):#获取单聊输入数据
