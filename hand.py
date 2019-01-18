@@ -38,7 +38,7 @@ class Hand:
         pass
 
 
-
+    #以下为处理界面操作函数
 
 
     def show_login(self):#显示登录框
@@ -62,7 +62,10 @@ class Hand:
         pass
         
     def get_multi_chat_data(self):#获取群聊输入数据
-
+        pass
+    
+    def send_to_server(self):#打包消息发送给服务器
+        pass
 
     
 
