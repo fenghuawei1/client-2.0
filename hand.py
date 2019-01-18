@@ -9,21 +9,8 @@ class Hand:
 
     def __init__(self):
 
-        self.LoginWindow = QMainWindow()#配置登录窗口
-        pass#此处初始化并配置登录UI界面
+        #初始化socket,服务器连接和线程
 
-        self.main_window = QMainWindow()#配置主界面窗口
-        pass
-
-        self.hall_window = QMainWindow()#配置大厅窗口
-        pass
-
-    
-        ...
-        此处配置其他窗口
-        ...
-
-        #以下初始化socket,服务器连接和线程
         self.address = (())
         self.client = socket.socket()
         self.client.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
@@ -33,15 +20,57 @@ class Hand:
         self.th = Data_transmit(self.client) #实例化数据传输模块，传入socket参数
 
 
+#**************************第一部分：配置各种界面*****************************
+
+    
+        
+        self.LoginWindow = QMainWindow()#配置登录窗口
+        pass
+
+        self.main_window = QMainWindow()#配置主界面窗口
+        pass
+
+        self.hall_window = QMainWindow()#配置大厅窗口
+        pass
+
+    
+
+#***********************第二部分：获取客户端信息，发送给服务器********************
+
+
+    def get_single_chat_data(self):#获取单聊输入数据
+        pass
+        
+    def get_multi_chat_data(self):#获取群聊输入数据
+        pass
+
+
+    #发送给服务器
+    
+    def send_to_server(self):
+
+        if self.tryConnServer():#尝试连接上服务器
+            pass
+
+    def tryConnServer(self):#连接服务器
+        if not self.connectServer():
+            pass
+
+    def connectServer(self):#此函数连接服务器
+        pass
 
     def open_thread(self):#此函数启动子线程循环接收数据
         pass
 
-    def parseData(self):#此函数接收并解析子线程从服务器传回的数据
+    
+#******************第三部分：接收从子线程传回的数据，并解析******************
+
+
+    def parseData(self):#接收数据，分发给解析函数
         pass
 
-
-    #以下为处理界面操作函数
+    
+    #以下函数解析收到的数据
 
 
     def show_login(self):#显示登录框
@@ -56,32 +85,6 @@ class Hand:
     def exit_main(self):#退出主界面
         pass
 
-    ...
-    其他界面操作
-    ...
-
-    def look(self):
-        pass
-
-    def get_single_chat_data(self):#获取单聊输入数据
-        pass
-        
-    def get_multi_chat_data(self):#获取群聊输入数据
-        pass
-    
-    def send_to_server(self):#打包消息发送给服务器
-
-        if self.tryConnServer():#尝试连接上服务器
-            pass
-
-    def tryConnServer(self):#连接服务器
-        if not self.connectServer():
-            pass
-
-    def connectServer(self):#此函数连接服务器
-        pass
-
-    
 
 
     
