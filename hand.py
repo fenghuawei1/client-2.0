@@ -59,6 +59,8 @@ class Hand:
     其他界面操作
     ...
 
+    def getxx(self):
+        pass
 
     def get_single_chat_data(self):#获取单聊输入数据
         pass
