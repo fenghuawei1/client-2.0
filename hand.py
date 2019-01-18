@@ -32,9 +32,6 @@ class Hand:
         self.th = Data_transmit(self.client) #实例化数据传输模块，传入socket参数
 
 
-    def connectServer(self):#此函数连接服务器
-        pass
-
 
     def open_thread(self):#此函数启动子线程循环接收数据
         pass
@@ -70,6 +67,15 @@ class Hand:
         pass
     
     def send_to_server(self):#打包消息发送给服务器
+
+        if self.tryConnServer():#尝试连接上服务器
+            pass
+
+    def tryConnServer(self):#连接服务器
+        if not self.connectServer():
+            pass
+
+    def connectServer(self):#此函数连接服务器
         pass
 
     
