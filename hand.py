@@ -1,6 +1,8 @@
+
 from PyQt5.QtWidgets import  QMainWindow
-from PyQt5.QtCore import QThread ,  pyqtSignal, QObject
-from PyQt5 import QtCore
+import socket
+from data_transmit import Data_transmit
+
 
 #此类用于处理UI界面
 class Hand:
@@ -10,10 +12,10 @@ class Hand:
         self.LoginWindow = QMainWindow()#配置登录窗口
         pass#此处初始化并配置登录UI界面
 
-        self.main_window=QMainWindow()#配置主界面窗口
+        self.main_window = QMainWindow()#配置主界面窗口
         pass
 
-        self.hall_window=QMainWindow()#配置大厅窗口
+        self.hall_window = QMainWindow()#配置大厅窗口
         pass
 
         ...
@@ -21,11 +23,14 @@ class Hand:
         ...
 
         #以下初始化socket,服务器连接和线程
-        self.address=(self.host,self.port)
-        self.client=socket.socket()
+        self.address = (())
+        self.client = socket.socket()
         self.client.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-        self.connState=False#配置服务器连接状态为关闭
-        self.threadState=False#配置线程开启状态为关闭
+        self.connState = False#配置服务器连接状态为关闭
+        self.threadState = False#配置线程开启状态为关闭
+
+        self.th = Data_transmit(self.client) #实例化数据传输模块，传入socket参数
+
 
     def connectServer(self):#此函数连接服务器
         pass

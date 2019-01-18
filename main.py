@@ -9,7 +9,7 @@ def main():
 
     ui_hand=Hand()#实例化UI对象
 
-    ui_hand.showLogin()#显示UI登录窗口
+    ui_hand.show_login()#显示UI登录窗口
 
     sys.exit(app.exec_())#开启程序
 

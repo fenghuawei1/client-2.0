@@ -1,13 +1,13 @@
 
 from PyQt5.QtCore import pyqtSignal, QObject, QThread
 
-class Send_recv(QThread):#继承Qthread线程类
+class Data_transmit(QThread):#继承Qthread线程类
 
     pressed=pyqtSignal()#设置信号槽
 
     def __init__(self,sockfd):#接收传入的socket
 
-        super(Send_recv,self).__init__()#重载QThread类
+        super(Data_transmit,self).__init__()#重载QThread类
         self.client=sockfd
         self.msg=''
 
