@@ -9,7 +9,7 @@ class Data_transmit(QThread):#继承Qthread线程类
 
         super(Data_transmit,self).__init__()#重载QThread类
         self.client = sockfd
-        self.msg = ''
+        self.pack = ''
 
 #主进程将待发送的数据包发送给服务器
 
@@ -24,6 +24,6 @@ class Data_transmit(QThread):#继承Qthread线程类
         while True:
             recv_data = self.client.recv(1024)
             data = recv_data.decode().split('::')
-            self.msg = data#接收到的数据
+            self.pack = data#接收到的数据
             self.pressed.emit()#关联给信号槽
 

@@ -1,5 +1,5 @@
 
-from PyQt5.QtWidgets import  QMainWindow
+from PyQt5.QtWidgets import  QMainWindow,QMessageBox 
 import socket
 from data_transmit import Data_transmit
 
@@ -35,7 +35,7 @@ class Hand:
 
     
 
-#***********************第二部分：获取客户端信息，发送给服务器********************
+#***********************第二部分：从UI界面获取信息，发送给服务器********************
 
 
     def get_single_chat_data(self):#获取单聊输入数据
@@ -47,27 +47,58 @@ class Hand:
 
     #发送给服务器
     
-    def send_to_server(self):
+    def send_to_server(self,data_pack):
 
         if self.tryConnServer():#尝试连接上服务器
-            pass
+            
+            if not self.open_thread():#尝试连接线程
+
+                self.th.data_to_server(data_pack)
+            
+            else:
+                self.th.data_to_server(data_pack)
+
+        
 
     def tryConnServer(self):#连接服务器
         if not self.connectServer():
-            pass
+            QMessageBox.warning(self.LoginWindow,
+                "警告",
+                "无法连接服务器！",
+                QMessageBox.Ok)
+            return False
+        return True
 
     def connectServer(self):#此函数连接服务器
-        pass
+        if self.connState == False:
+            try:
+                self.client.connect(self.address) 
+                self.connState = True
+            except Exception:
+                pass
+
+            print('已连接服务器！')
+
+        return self.connState#返回服务器连接状态
+
+
 
     def open_thread(self):#此函数启动子线程循环接收数据
-        pass
+        if self.threadState == False:
+
+            self.th.start()
+            self.th.pressed.connect(self.parseData)#设置信号槽
+            print('已开启子线程！')
+            self.threadState = True
+        
+        return self.threadState#返回线程状态
 
     
 #******************第三部分：接收从子线程传回的数据，并解析******************
 
 
     def parseData(self):#接收数据，分发给解析函数
-        pass
+        print(self.th.pack)#接收到来自服务器的数据包
 
     
     #以下函数解析收到的数据
