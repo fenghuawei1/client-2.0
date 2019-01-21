@@ -33,6 +33,7 @@ class Hand:
         self.hall_window = QMainWindow()#配置大厅窗口
         pass
 
+
     
 
 #***********************第二部分：从UI界面获取信息，发送给服务器********************
@@ -99,6 +100,12 @@ class Hand:
 
     def parseData(self):#接收数据，分发给解析函数
         print(self.th.pack)#接收到来自服务器的数据包
+
+        if self.th.pack == 1:
+            pass
+
+        if self.th.pack == 2:
+            pass
 
     
     #以下函数解析收到的数据
