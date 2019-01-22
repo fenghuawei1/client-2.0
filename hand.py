@@ -2,7 +2,7 @@
 from PyQt5.QtWidgets import  QMainWindow,QMessageBox 
 import socket
 from data_transmit import Data_transmit
-
+from ui import Ui_MainWindow 
 
 #此类用于处理UI界面
 class Hand:
@@ -33,6 +33,7 @@ class Hand:
         self.hall_window = QMainWindow()#配置大厅窗口
         pass
 
+       self.duihuakuangwindow = QMainWindow()#配置对话框窗口
 
     
 
